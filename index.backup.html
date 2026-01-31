@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1 class="title">Weather Dashboard</h1>
+      <p class="subtitle">Quick overview + presets for common conditions</p>
+    </header>
+
+    <!-- Search Box -->
+    <div class="search-box">
+      <input type="text" placeholder="Enter city name" id="city-input" autocomplete="off" />
+      <button id="search-btn">Search</button>
+    </div>
+
+    <main class="dashboard">
+      <!-- Main Weather Card -->
+      <section class="weather-card">
+        <h2 class="city" id="city">City Name</h2>
+
+        <div class="weather-info">
+          <img src="" alt="Weather Icon" class="weather-icon" id="weather-icon" />
+          <div>
+            <h1 class="temperature" id="temperature">--°C</h1>
+            <p class="description" id="description">Weather description</p>
+          </div>
+        </div>
+
+        <div class="details">
+          <div>
+            <p class="label">Humidity</p>
+            <p id="humidity">--%</p>
+          </div>
+          <div>
+            <p class="label">Wind Speed</p>
+            <p id="wind">-- km/h</p>
+          </div>
+        </div>
+
+        <p class="error" id="error-message"></p>
+      </section>
+
+      <!-- Quick Conditions / Icons -->
+      <aside class="quick-conditions">
+        <h3>Quick Conditions</h3>
+
+        <!-- Sunny -->
+        <div class="condition" id="cond-sunny" title="Sunny">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="32" cy="32" r="12" fill="#FFD166" />
+            <g stroke="#FFD166" stroke-width="3">
+              <line x1="32" y1="4" x2="32" y2="14" />
+              <line x1="32" y1="50" x2="32" y2="60" />
+              <line x1="4" y1="32" x2="14" y2="32" />
+              <line x1="50" y1="32" x2="60" y2="32" />
+              <line x1="12" y1="12" x2="18" y2="18" />
+              <line x1="46" y1="46" x2="52" y2="52" />
+              <line x1="12" y1="52" x2="18" y2="46" />
+              <line x1="46" y1="18" x2="52" y2="12" />
+            </g>
+          </svg>
+          <div>
+            <div class="condition-label">Sunny</div>
+            <div class="condition-sub">Clear skies</div>
+          </div>
+        </div>
+
+        <!-- Rainy -->
+        <div class="condition" id="cond-rainy" title="Rainy">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="#9EC5F8">
+              <path d="M20 30a12 12 0 0123.8-4.8A9 9 0 1150 40H18a6 6 0 010-12z" fill="#BBD9FF"/>
+            </g>
+            <g fill="#5DA6FF">
+              <path d="M24 46c0 3-3 6-3 6s-3-3-3-6 1.3-4 3-4 3 1 3 4z"/>
+              <path d="M36 46c0 3-3 6-3 6s-3-3-3-6 1.3-4 3-4 3 1 3 4z"/>
+              <path d="M48 46c0 3-3 6-3 6s-3-3-3-6 1.3-4 3-4 3 1 3 4z"/>
+            </g>
+          </svg>
+          <div>
+            <div class="condition-label">Rainy</div>
+            <div class="condition-sub">Light showers</div>
+          </div>
+        </div>
+
+        <!-- Cold -->
+        <div class="condition" id="cond-cold" title="Cold">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#9AD3F5" stroke-width="2" fill="none">
+              <path d="M32 8v48" />
+              <path d="M12 28h40" />
+              <path d="M20 16l24 32" />
+              <path d="M44 16L20 48" />
+            </g>
+            <circle cx="32" cy="32" r="8" fill="#E6F7FF" />
+          </svg>
+          <div>
+            <div class="condition-label">Cold</div>
+            <div class="condition-sub">Frost / Snow</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+      // Quick-presets: when a condition is clicked, populate the UI with example data
+      document.getElementById('cond-sunny').addEventListener('click', ()=>{
+        document.getElementById('description').textContent = 'Sunny';
+        document.getElementById('temperature').textContent = '27°C';
+        document.getElementById('humidity').textContent = '30%';
+        document.getElementById('wind').textContent = '8 km/h';
+      });
+      document.getElementById('cond-rainy').addEventListener('click', ()=>{
+        document.getElementById('description').textContent = 'Rainy';
+        document.getElementById('temperature').textContent = '18°C';
+        document.getElementById('humidity').textContent = '88%';
+        document.getElementById('wind').textContent = '14 km/h';
+      });
+      document.getElementById('cond-cold').addEventListener('click', ()=>{
+        document.getElementById('description').textContent = 'Cold';
+        document.getElementById('temperature').textContent = '-2°C';
+        document.getElementById('humidity').textContent = '75%';
+        document.getElementById('wind').textContent = '6 km/h';
+      });
+    </script>
+  </div>
+</body>
+</html>
