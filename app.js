@@ -76,6 +76,12 @@ let hourlyChart = new Chart(ctx, {
   }
 });
 
+const defaultlocation={
+latitude:25.625,
+longitude:85.125
+};
+
+weather(defaultlocation.latitude, defaultlocation.longitude);
 
 // ===============================
 // Fetch Coordinates
